@@ -13,8 +13,8 @@ setup(
     author='liumin',
     author_email='liumin08@baidu.com',
     license='BSD',
-    url='https://github.com/jkbrzt/httpie-aws-auth',
-    download_url='https://github.com/jkbrzt/httpie-aws-auth',
+    url='https://github.com/semicarryispig/bce-multimedia-tool',
+    download_url='https://github.com/semicarryispig/bce-multimedia-tool',
     py_modules=['httpie_media_auth'],
     zip_safe=False,
     entry_points={
