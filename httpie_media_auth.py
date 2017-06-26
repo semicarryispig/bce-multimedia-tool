@@ -11,8 +11,8 @@ from httpie.compat import bytes
 from mediaauth import mediaAuth
 
 
-KEY = 'AWS_ACCESS_KEY_ID'
-SECRET = 'AWS_SECRET_ACCESS_KEY'
+KEY = 'ACCESS_KEY_ID'
+SECRET = 'SECRET_ACCESS_KEY'
 
 
 class BytesHeadersFriendlyMediaAuth(MediaAuth):
@@ -49,7 +49,7 @@ class MediaAuthPlugin(AuthPlugin):
             if not secret:
                 missing.append(SECRET)
             sys.stderr.write(
-                'httpie-aws-auth error: missing {1}\n'
+                'httpie-media-auth error: missing {1}\n'
                     .format(self.name, ' and '.join(missing))
             )
             sys.exit(ExitStatus.PLUGIN_ERROR)
