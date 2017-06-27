@@ -32,7 +32,7 @@ class MediaAuth(AuthBase):
         """
         parsedurl = urlparse(r.url)
         uri = parsedurl.path
-        request = self.get_request(r.method, uri)
+        request = self.get_request(r.method, uri, parsedurl.query)
         request = self.generate_signature(request)
         r.headers['x-bce-date'] = request['headers']['x-bce-date']
         r.headers['x-bce-request-id'] = request['headers']['x-bce-request-id']
@@ -58,17 +58,22 @@ class MediaAuth(AuthBase):
         request['headers']['content-type'] = 'application/json'
         return request
 
-    def get_request(self, method='', uri=''):
+    def get_request(self, method='', uri='', params=''):
         """
         :param method:
         :param uri:
         :return:
         """
+        params_dict = {}
+        if params.find("=") != -1:
+            params_dict = dict((k.strip(), v.strip()) for k,v in(item.split('=') for item in params.split('&')))
+        elif params != '':
+            params_dict = {}
+            params_dict[params] = ''
         return {
             'method': method,
             'uri': uri,
-            'params': {
-            },
+            'params': params_dict,
             'headers': {
                 'x-bce-date': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
                 'host': self.service_base_url,

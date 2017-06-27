@@ -1,21 +1,16 @@
 from setuptools import setup
-try:
-    import multiprocessing
-except ImportError:
-    pass
-
 
 setup(
     name='httpie-media-auth',
     description='BCE/Media auth plugin for HTTPie.',
     long_description=open('README.rst').read().strip(),
-    version='0.0.1',
+    version='0.0.7',
     author='liumin',
     author_email='liumin08@baidu.com',
     license='BSD',
     url='https://github.com/semicarryispig/bce-multimedia-tool',
     download_url='https://github.com/semicarryispig/bce-multimedia-tool',
-    py_modules=['httpie_media_auth'],
+    py_modules=['httpie_media_auth', 'mediaauth', 'bcesigner'],
     zip_safe=False,
     entry_points={
         'httpie.plugins.auth.v1': [
@@ -24,7 +19,6 @@ setup(
     },
     install_requires=[
         'httpie>=0.9.7',
-        'requests-aws>=0.1.8'
     ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

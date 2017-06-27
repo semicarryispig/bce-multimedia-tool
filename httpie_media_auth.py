@@ -8,7 +8,7 @@ import sys
 from httpie import ExitStatus
 from httpie.plugins import AuthPlugin
 from httpie.compat import bytes
-from mediaauth import mediaAuth
+from mediaauth import MediaAuth
 
 
 KEY = 'ACCESS_KEY_ID'
